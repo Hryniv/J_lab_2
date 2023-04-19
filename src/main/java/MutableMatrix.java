@@ -200,13 +200,13 @@ public class MutableMatrix implements Matrix {
         if (!(o instanceof Matrix)) {
             return false;
         }
-        MutableMatrix other = (MutableMatrix) o;
-        if (numOfRows != other.numOfRows || numOfCols != other.numOfCols) {
+        Matrix other = (Matrix) o;
+        if (numOfRows != other.getNumOfRows() || numOfCols != other.getNumOfCols()) {
             return false;
         }
         for (int i = 0; i < numOfRows; i++) {
             for (int j = 0; j < numOfCols; j++) {
-                if (!Objects.equals(array[i][j], other.array[i][j])) {
+                if (!Objects.equals(array[i][j], other.toArray()[i][j])) {
                     return false;
                 }
             }
@@ -280,10 +280,7 @@ public class MutableMatrix implements Matrix {
                 builder.append(array[i][j]).append("  ");
             }
         }
-        return "MutableMatrix{"
-                + "numOfRows=" + numOfRows
-                + ", numOfCols=" + numOfCols + '}'
-                + builder;
+        return builder.toString();
     }
 }
 
