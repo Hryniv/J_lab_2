@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ImmutableMatrixTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2023-04-20T18:09:13" hostname="WIN-EG7UMJB3GFR" time="0.071">
+  <properties/>
+  <testcase name="setColumn_notOk()" classname="ImmutableMatrixTest" time="0.042"/>
+  <testcase name="createMatrix_array_ok()" classname="ImmutableMatrixTest" time="0.008"/>
+  <testcase name="setRow_notOk()" classname="ImmutableMatrixTest" time="0.002"/>
+  <testcase name="createMatrix_nullMatrix_notOk()" classname="ImmutableMatrixTest" time="0.002"/>
+  <testcase name="getElement()" classname="ImmutableMatrixTest" time="0.002"/>
+  <testcase name="createMatrix_ok()" classname="ImmutableMatrixTest" time="0.001"/>
+  <testcase name="createMatrix_matrix_ok()" classname="ImmutableMatrixTest" time="0.001"/>
+  <testcase name="setElement_notOk()" classname="ImmutableMatrixTest" time="0.001"/>
+  <testcase name="getRow_ok()" classname="ImmutableMatrixTest" time="0.001"/>
+  <testcase name="multiplication_ok()" classname="ImmutableMatrixTest" time="0.002"/>
+  <testcase name="createEmptyMatrix_ok()" classname="ImmutableMatrixTest" time="0.002"/>
+  <testcase name="setByRandomElement()" classname="ImmutableMatrixTest" time="0.001"/>
+  <testcase name="getColumn_ok()" classname="ImmutableMatrixTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

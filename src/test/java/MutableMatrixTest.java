@@ -11,7 +11,7 @@ public class MutableMatrixTest {
     public void createEmptyMatrix_ok() {
         Matrix mutableMatrix = new MutableMatrix();
 
-        assertEquals("0x0", mutableMatrix.size());
+        assertArrayEquals(new int[]{0, 0}, mutableMatrix.size());
         assertEquals("Matrix is empty", mutableMatrix.toString());
         assertEquals(0, mutableMatrix.hashCode());
     }
@@ -20,7 +20,7 @@ public class MutableMatrixTest {
     public void createMatrix_ok() {
         MutableMatrix mutableMatrix = new MutableMatrix(2, 2);
 
-        assertEquals("2x2", mutableMatrix.size());
+        assertArrayEquals(new int[]{2, 2}, mutableMatrix.size());
     }
 
     @Test
@@ -31,9 +31,8 @@ public class MutableMatrixTest {
         MutableMatrix matrix = new MutableMatrix(array);
 
         assertArrayEquals(array, matrix.toArray());
-        assertEquals("MutableMatrix{numOfRows=2, numOfCols=2}\n" +
-                        "1  2  \n" +
-                        "3  4  ",
+        assertEquals("1  2  \n" +
+                                "3  4  ",
                 matrix.toString());
     }
 
@@ -107,11 +106,11 @@ public class MutableMatrixTest {
     public void setByRandomElements_ok() {
         Matrix matrix = new MutableMatrix();
         matrix.setByRandomElements(9);
-        assertEquals("0x0", matrix.size());
+        assertArrayEquals(new int[]{0, 0}, matrix.size());
 
         MutableMatrix matrix1 = new MutableMatrix(2, 2);
         matrix1.setByRandomElements(9);
-        assertEquals("2x2", matrix1.size());
+        assertArrayEquals(new int[] {2, 2}, matrix1.size());
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 2; j++) {
                 if (matrix1.toArray()[i][j] == null)
@@ -218,14 +217,11 @@ public class MutableMatrixTest {
             matrix.getColumn(-1);
         });
     }
-/*
     @Test
     public void createRandomColumnMatrix_ok() {
         Matrix matrix = MutableMatrix.crateRandomColumnMatrix(3, 9);
-        assertEquals("3x1", matrix.size());
+        assertArrayEquals(new int[]{3, 1}, matrix.size());
     }
-
- */
 
     @Test
     public void multiplication_correctMatrix_ok() {
@@ -287,4 +283,5 @@ public class MutableMatrixTest {
             matrix.multiplication(matrix1);
         });
     }
+
 }

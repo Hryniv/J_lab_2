@@ -1,5 +1,3 @@
-import exception.MatrixException;
-
 import java.math.BigDecimal;
 
 public interface Matrix {
@@ -18,7 +16,7 @@ public interface Matrix {
     BigDecimal[] getColumn(int index_column);
 
     BigDecimal[][] toArray();
-    String size();
+    int[] size();
     boolean isEmpty();
 
     String toString();

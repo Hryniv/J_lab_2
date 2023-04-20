@@ -46,8 +46,8 @@ public class MutableMatrix implements Matrix {
     }
 
     @Override
-    public String size() {
-        return String.format("%sx%s", numOfRows, numOfCols);
+    public int[] size() {
+        return new int[] {numOfRows, numOfCols};
     }
 
     @Override
@@ -280,7 +280,7 @@ public class MutableMatrix implements Matrix {
                 builder.append(array[i][j]).append("  ");
             }
         }
-        return builder.toString();
+        return builder.substring(1).toString();
     }
 }
 
