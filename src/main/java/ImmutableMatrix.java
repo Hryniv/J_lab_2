@@ -1,7 +1,5 @@
 import exception.UnsupportedMatrixOperationException;
-
 import java.math.BigDecimal;
-import java.util.Objects;
 
 public final class ImmutableMatrix extends MutableMatrix implements Matrix {
     private final Matrix matrix;
@@ -10,7 +8,7 @@ public final class ImmutableMatrix extends MutableMatrix implements Matrix {
         if (matrix == null) {
             throw new NullPointerException();
         }
-        this.matrix = matrix;
+        this.matrix = new ImmutableMatrix(matrix.toArray());
     }
 
     public ImmutableMatrix() {
@@ -22,7 +20,7 @@ public final class ImmutableMatrix extends MutableMatrix implements Matrix {
     }
 
     public ImmutableMatrix(BigDecimal[][] array) {
-        this(new MutableMatrix(array));
+        this.matrix = new MutableMatrix(deepArrayCopy(array));
     }
 
     @Override
@@ -44,23 +42,23 @@ public final class ImmutableMatrix extends MutableMatrix implements Matrix {
 
     @Override
     public void setByRandomElements(int bound) {
-        throw new UnsupportedMatrixOperationException("");
+        throw new UnsupportedMatrixOperationException();
     }
 
     @Override
     public void setElement(int i, int j, BigDecimal element) {
-        throw new UnsupportedMatrixOperationException("");
+        throw new UnsupportedMatrixOperationException();
     }
 
     @Override
     public void setRow(int rowIndex, BigDecimal[] row) {
-        throw new UnsupportedMatrixOperationException("");
+        throw new UnsupportedMatrixOperationException();
 
     }
 
     @Override
     public void setColumn(int colIndex, BigDecimal[] column) {
-        throw new UnsupportedMatrixOperationException("");
+        throw new UnsupportedMatrixOperationException();
     }
 
     @Override
@@ -84,7 +82,7 @@ public final class ImmutableMatrix extends MutableMatrix implements Matrix {
     }
 
     @Override
-    public String size() {
+    public int[] size() {
         return matrix.size();
     }
 
@@ -95,6 +93,9 @@ public final class ImmutableMatrix extends MutableMatrix implements Matrix {
 
     private BigDecimal[][] deepArrayCopy(BigDecimal[][] array) {
         int rows = array.length;
+        if (rows == 0) {
+            return new BigDecimal[0][0];
+        }
         int cols = array[0].length;
         BigDecimal[][] decimals = new BigDecimal[rows][cols];
         for (int i = 0; i < rows; i++) {
@@ -109,11 +110,7 @@ public final class ImmutableMatrix extends MutableMatrix implements Matrix {
     private BigDecimal[] deepArrayCopy(BigDecimal[] array) {
         BigDecimal[] decimals = new BigDecimal[array.length];
         for (int i = 0; i < array.length; i++) {
-            if (array[i] == null) {
-                decimals[i] = null;
-                continue;
-            }
-            decimals[i] = new BigDecimal(array[i].toString());
+            decimals[i] = array[i] == null ? null : new BigDecimal(array[i].toString());
         }
         return decimals;
     }
@@ -126,5 +123,10 @@ public final class ImmutableMatrix extends MutableMatrix implements Matrix {
     @Override
     public int hashCode() {
         return matrix.hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return matrix.toString();
     }
 }
